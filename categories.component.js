@@ -2,15 +2,11 @@
     'use strict';
 
     angular.module('MenuApp')
-    .component('categories', {
-        templateUrl: 'categories.template.html',
-        controller: CategoriesComponentController,
-        bindings: {
-            categories: '<'
-        }
-    });
+    .controller('CategoriesController', CategoriesController);
 
-    function CategoriesComponentController() {
-        var $ctrl = this;
+    CategoriesController.$inject = ['categories'];
+    function CategoriesController(categories) {
+        var categoriesCtrl = this;
+        categoriesCtrl.categories = categories;
     }
 })();
