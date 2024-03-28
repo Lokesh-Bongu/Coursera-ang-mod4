@@ -12,6 +12,7 @@
             return $http.get('https://coursera-jhu-default-rtdb.firebaseio.com/categories.json')
             .then(function (response) {
                 return response.data;
+                console.log("response.data",response.data)
             });
         };
 
@@ -19,6 +20,7 @@
             return $http.get('https://coursera-jhu-default-rtdb.firebaseio.com/menu_items/' + categoryShortName + '.json')
             .then(function (response) {
                 return response.data;
+                console.log("response.data",response.data)
             });
         };
     }
