@@ -3,10 +3,14 @@
 
     angular.module('MenuApp')
     .component('items', {
-        templateUrl: 'src/items.template.html',
+        templateUrl: 'items.template.html',
+        controller: ItemsComponentController,
         bindings: {
             items: '<'
         }
     });
 
+    function ItemsComponentController() {
+        var $ctrl = this;
+    }
 })();
