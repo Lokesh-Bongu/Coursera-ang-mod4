@@ -1,15 +1,7 @@
-// menuapp.module.js
 (function () {
     'use strict';
 
-    angular.module('RoutingApp', ['ui.router', 'data']);
-})();
-
-// routes.js
-(function () {
-    'use strict';
-
-    angular.module('RoutingApp')
+    angular.module('MenuApp')
     .config(RoutesConfig);
 
     RoutesConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
