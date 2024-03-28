@@ -6,16 +6,19 @@
 
     RoutesConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
     function RoutesConfig($stateProvider, $urlRouterProvider) {
+
+        // Redirect to home page if no other URL matches
         $urlRouterProvider.otherwise('/');
 
+        // Set up UI states
         $stateProvider
         .state('home', {
             url: '/',
-            templateUrl: 'home.template.html'
+            templateUrl: 'src/home.template.html'
         })
         .state('categories', {
             url: '/categories',
-            templateUrl: 'categories.template.html',
+            templateUrl: 'src/categories.template.html',
             controller: 'CategoriesController as categoriesCtrl',
             resolve: {
                 categories: ['MenuDataService', function (MenuDataService) {
@@ -25,14 +28,13 @@
         })
         .state('items', {
             url: '/items/{categoryShortName}',
-            templateUrl: 'items.template.html',
+            templateUrl: 'src/items.template.html',
             controller: 'ItemsController as itemsCtrl',
             resolve: {
-                items: ['$stateParams', 'MenuDataService', function ($stateParams, MenuDataService) {
+                items: ['MenuDataService', '$stateParams', function (MenuDataService, $stateParams) {
                     return MenuDataService.getItemsForCategory($stateParams.categoryShortName);
                 }]
             }
         });
     }
-
 })();
